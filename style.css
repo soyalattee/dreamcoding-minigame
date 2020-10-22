@@ -1,0 +1,105 @@
+:root {
+  /* color */
+  --color-black: #3f454d;
+  --color-white: #ffffff;
+  --color-blue: #3b88c3;
+  --color-yellow: #fbbe28;
+  --color-pink: #fd7f84;
+  --color-light-grey: #dfdfdf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-black);
+}
+
+.game-ground {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  height: 1024px;
+}
+
+.logo {
+  position: absolute;
+  left: 45%;
+  width: 100px;
+  height: 100px;
+  background-image: url("./img/logo.png");
+  background-repeat: no-repeat;
+}
+
+.category {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 100px;
+}
+.filter {
+  float: left;
+  width: calc(80% / 6);
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 100px;
+  font-size: large;
+  font-weight: bold;
+  background-position: center;
+}
+#top {
+  background-image: url("./img/blue_t.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#pants {
+  background-image: url("./img/blue_p.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#skirt {
+  background-image: url("./img/blue_s.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#yellow {
+  background-color: #fbbe28;
+}
+#blue {
+  background-color: #3b88c3;
+}
+#pink {
+  background-color: #fd7f84;
+}
+
+.item-list {
+  list-style: none;
+  overflow-y: auto;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 90%;
+  height: 600px;
+  padding: 0px;
+}
+
+.item {
+  font-size: large;
+  line-height: 50px;
+  border: 2px solid #dddddd;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: #fffffd;
+  margin-bottom: 5px;
+}
+.item > img {
+  float: left;
+}
+
+.item > div {
+  margin-left: 70px;
+}
