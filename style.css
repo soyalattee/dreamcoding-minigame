@@ -1,4 +1,5 @@
 :root {
+  /* 사이즈나 색을 변수로 지정해 사용한다 */
   /* color */
   --color-black: #3f454d;
   --color-white: #ffffff;
@@ -6,6 +7,15 @@
   --color-yellow: #fbbe28;
   --color-pink: #fd7f84;
   --color-light-grey: #dfdfdf;
+  /* size */
+  --base-space: 8px;
+  --size-btn: 60px;
+  --size-border: 4px;
+  --btn-font-size: 18px;
+  --size-thumbnail: 50px;
+
+  /* animation */
+  --animation-duration: 300ms;
 }
 
 * {
@@ -14,42 +24,62 @@
 
 body {
   background-color: var(--color-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
 }
 
 .game-ground {
-  position: absolute;
-  top: 10%;
-  left: 20%;
-  width: 60%;
-  height: 1024px;
+  display: flex;
+  /* 정렬 축 결정 */
+  flex-direction: column;
+  /* 아이템들을 축의 중앙 으로 정렬 정 가운데로 오게 */
+  justify-content: center;
+  /* 아이템들 중앙라인 으로 정렬 */
+  align-items: center;
+  width: 100vh;
+  height: 100vh;
 }
 
 .logo {
-  position: absolute;
-  left: 45%;
   width: 100px;
   height: 100px;
+  cursor: pointer;
+  transition: transform var(--animation-duration) ease;
   background-image: url("./img/logo.png");
   background-repeat: no-repeat;
+  background-position: right;
+}
+
+/* 마우스 hover 시 커지는 애니메이션 추가 */
+.logo:hover,
+.filter:hover {
+  transform: scale(1.1);
 }
 
 .category {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  width: 90%;
-  height: 100px;
+  display: flex;
+  width: 50%;
 }
 .filter {
-  float: left;
-  width: calc(80% / 6);
-  height: 100px;
-  margin: 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
   text-align: center;
-  line-height: 100px;
-  font-size: large;
   font-weight: bold;
-  background-position: center;
+  transition: transform var(--animation-duration) ease;
+  margin-right: var(--base-space);
+}
+.img-btn {
+  width: var(--size-btn);
+  height: var(--size-btn);
+}
+.color-btn {
+  font-size: var(--btn-font-size);
+  padding: calc(var(--base-space) * 2);
+  border-radius: var(--size-border);
 }
 #top {
   background-image: url("./img/blue_t.png");
@@ -67,28 +97,26 @@ body {
   background-size: contain;
 }
 #yellow {
-  background-color: #fbbe28;
+  background-color: var(--color-yellow);
 }
 #blue {
-  background-color: #3b88c3;
+  background-color: var(--color-blue);
 }
 #pink {
-  background-color: #fd7f84;
+  background-color: var(--color-pink);
 }
 
 .item-list {
   list-style: none;
+  width: 60%;
+  height: 60%;
+  padding-left: 0;
   overflow-y: auto;
-  position: absolute;
-  top: 20%;
-  left: 5%;
-  width: 90%;
-  height: 600px;
-  padding: 0px;
 }
 
 .item {
-  font-size: large;
+  display: flex;
+  font-size: var(--btn-font-size);
   line-height: 50px;
   border: 2px solid #dddddd;
   border-radius: 6px;
@@ -97,9 +125,10 @@ body {
   margin-bottom: 5px;
 }
 .item > img {
-  float: left;
+  width: var(--size-thumbnail);
+  height: var(--size-thumbnail);
 }
 
 .item > div {
-  margin-left: 70px;
+  margin-left: var(--base-space);
 }
