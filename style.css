@@ -60,7 +60,8 @@ body {
 
 .category {
   display: flex;
-  width: 50%;
+  justify-content: center;
+  width: 60%;
 }
 .filter {
   background-color: transparent;
@@ -71,6 +72,7 @@ body {
   font-weight: bold;
   transition: transform var(--animation-duration) ease;
   margin-right: var(--base-space);
+  background-position: center;
 }
 .img-btn {
   width: var(--size-btn);
@@ -124,11 +126,11 @@ body {
   background-color: #fffffd;
   margin-bottom: 5px;
 }
-.item > img {
+.item__image {
   width: var(--size-thumbnail);
   height: var(--size-thumbnail);
 }
 
-.item > div {
+.item__description {
   margin-left: var(--base-space);
 }
