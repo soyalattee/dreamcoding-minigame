@@ -1,6 +1,5 @@
 "use strict";
-//data 를 가져온다
-//item 이라는 div를 만들어 이미지와 속성을 넣는다
+
 function loadItems() {
   return fetch("./data/data.json")
     .then((response) => response.json())
@@ -16,31 +15,6 @@ function showItems(items) {
   // map 으로 배열안 객체를 <li>...</li> 형태로 바꾼뒤 join 을 통해 한 문자열로 만들어 추가
   console.log(items);
   list.innerHTML = items.map((item) => createHTMLString(item)).join("");
-
-  // items.forEach((item) => {
-  //   const listItem = document.createElement("li");
-  //   listItem.setAttribute("class", "item");
-  //   const attribute = document.createElement("div");
-  //   //item의 텍스트
-  //   let str = "";
-  //   for (let value in item) {
-  //     if (value === "img") continue;
-  //     str += `${item[value]}, `;
-  //   }
-  //   str = str.slice(0, str.length - 2);
-  //   const text = document.createTextNode(str);
-
-  //   //item의 이미지
-  //   const img = document.createElement("img");
-  //   img.src = item["img"];
-  //   img.width = 50;
-  //   listItem.appendChild(img);
-  //   attribute.appendChild(text);
-  //   listItem.appendChild(attribute);
-
-  //   //console.log(item);
-  //   list.appendChild(listItem);
-  // });
 }
 
 function createHTMLString(item) {
