@@ -115,6 +115,10 @@ body {
   padding-left: 0;
   overflow-y: auto;
 }
+/* 스크롤 바 안보이게 함  */
+.item-list::-webkit-scrollbar {
+  display: none;
+}
 
 .item {
   display: flex;
