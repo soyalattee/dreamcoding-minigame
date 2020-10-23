@@ -14,6 +14,7 @@ function showItems(items) {
   // array.map : 한 배열의 요소들을 다른 요소로 변경 한다.
   // array.join : 문자열 배열을 하나의 문자열로 생성 .
   // map 으로 배열안 객체를 <li>...</li> 형태로 바꾼뒤 join 을 통해 한 문자열로 만들어 추가
+  console.log(items);
   list.innerHTML = items.map((item) => createHTMLString(item)).join("");
 
   // items.forEach((item) => {
@@ -44,37 +45,58 @@ function showItems(items) {
 
 function createHTMLString(item) {
   return `
-  <li class="item">
+  <li class="item  index${item.index}">
     <img src="${item.img}" alt="${item.type}" class="item__image"/>
     <span class="item__description">${item.sex}, ${item.size}</span>
   </li>`;
 }
 
 function setEventListeners(items) {
-  let category = document
+  const category = document
     .querySelector(".category")
     .addEventListener("click", (event) => {
-      const filter = event.target.id;
-      if (!filter) return;
-      onButtonClick(filter, items);
+      const dataset = event.target.dataset;
+      onButtonClick(dataset, items);
     });
-  let logo = document
+  const logo = document
     .querySelector(".logo")
     .addEventListener("click", () => showItems(items));
 }
 
 // 이벤트를 처리하는 함수는 "on+어떤이벤트 처리" 로 작성한다.
-function onButtonClick(value, items) {
-  const filteredItems = items.filter((item) => {
-    for (let val in item) {
-      if (item[val] == value) return item;
+function onButtonClick(dataset, items) {
+  const key = dataset.key;
+  const value = dataset.value;
+
+  if (key == null || value == null) return;
+  //filter : 특정 조건을 만족하는 요소들로만 새로운 배열 생성
+  //const filteredItems = items.filter((item) => item[key] === value);
+  //showItems(filteredItems);
+  updateItems(items, key, value);
+}
+
+// classList : 엘리먼트 클래스속성의 컬렉선. remove, add , item, contains, replaces 등 가능
+function updateItems(items, key, value) {
+  items.forEach((item) => {
+    if (item[key] === value) {
+      console.log(`item: ${item.index}`);
+      document
+        .querySelector(`.index${item.index}`)
+        .classList.remove("invisible");
+    } else {
+      console.log(item.index);
+      document.querySelector(`.index${item.index}`).classList.add("invisible");
     }
-  }); // type value에 맞는것만 필터
-  showItems(filteredItems);
+  });
 }
 
 //main
 loadItems()
+  .then((items) => {
+    let idx = 0;
+    items.forEach((item) => (item.index = idx++));
+    return items;
+  })
   .then((items) => {
     showItems(items);
     setEventListeners(items); //상단에 하나 달아주면될듯

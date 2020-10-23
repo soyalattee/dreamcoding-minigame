@@ -134,3 +134,7 @@ body {
 .item__description {
   margin-left: var(--base-space);
 }
+
+.invisible {
+  display: none;
+}
