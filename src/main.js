@@ -9,7 +9,7 @@ function loadItems() {
 // 클릭시 이벤트 발생 : item 제거 후 해당 속성인 아이템만 추가
 function showItems(items) {
   const list = document.querySelector(".item-list");
-  let last;
+
   // array.map : 한 배열의 요소들을 다른 요소로 변경 한다.
   // array.join : 문자열 배열을 하나의 문자열로 생성 .
   // map 으로 배열안 객체를 <li>...</li> 형태로 바꾼뒤 join 을 통해 한 문자열로 만들어 추가
@@ -52,14 +52,11 @@ function onButtonClick(dataset, items) {
 // classList : 엘리먼트 클래스속성의 컬렉선. remove, add , item, contains, replaces 등 가능
 function updateItems(items, key, value) {
   items.forEach((item) => {
+    const container = document.querySelector(`.index${item.index}`);
     if (item[key] === value) {
-      console.log(`item: ${item.index}`);
-      document
-        .querySelector(`.index${item.index}`)
-        .classList.remove("invisible");
+      container.classList.remove("invisible");
     } else {
-      console.log(item.index);
-      document.querySelector(`.index${item.index}`).classList.add("invisible");
+      container.classList.add("invisible");
     }
   });
 }
